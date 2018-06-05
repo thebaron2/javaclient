@@ -16,8 +16,6 @@ public class Product  implements java.io.Serializable {
 
     private java.lang.Double price;
 
-    private org.datacontract.schemas._2004._07.ShopServerLibrary.Product[] products;
-
     public Product() {
     }
 
@@ -25,13 +23,11 @@ public class Product  implements java.io.Serializable {
            java.lang.Integer amount,
            java.lang.Integer id,
            java.lang.String name,
-           java.lang.Double price,
-           org.datacontract.schemas._2004._07.ShopServerLibrary.Product[] products) {
+           java.lang.Double price) {
            this.amount = amount;
            this.id = id;
            this.name = name;
            this.price = price;
-           this.products = products;
     }
 
 
@@ -114,26 +110,6 @@ public class Product  implements java.io.Serializable {
         this.price = price;
     }
 
-
-    /**
-     * Gets the products value for this Product.
-     * 
-     * @return products
-     */
-    public org.datacontract.schemas._2004._07.ShopServerLibrary.Product[] getProducts() {
-        return products;
-    }
-
-
-    /**
-     * Sets the products value for this Product.
-     * 
-     * @param products
-     */
-    public void setProducts(org.datacontract.schemas._2004._07.ShopServerLibrary.Product[] products) {
-        this.products = products;
-    }
-
     private java.lang.Object __equalsCalc = null;
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof Product)) return false;
@@ -157,10 +133,7 @@ public class Product  implements java.io.Serializable {
               this.name.equals(other.getName()))) &&
             ((this.price==null && other.getPrice()==null) || 
              (this.price!=null &&
-              this.price.equals(other.getPrice()))) &&
-            ((this.products==null && other.getProducts()==null) || 
-             (this.products!=null &&
-              java.util.Arrays.equals(this.products, other.getProducts())));
+              this.price.equals(other.getPrice())));
         __equalsCalc = null;
         return _equals;
     }
@@ -183,17 +156,6 @@ public class Product  implements java.io.Serializable {
         }
         if (getPrice() != null) {
             _hashCode += getPrice().hashCode();
-        }
-        if (getProducts() != null) {
-            for (int i=0;
-                 i<java.lang.reflect.Array.getLength(getProducts());
-                 i++) {
-                java.lang.Object obj = java.lang.reflect.Array.get(getProducts(), i);
-                if (obj != null &&
-                    !obj.getClass().isArray()) {
-                    _hashCode += obj.hashCode();
-                }
-            }
         }
         __hashCodeCalc = false;
         return _hashCode;
@@ -232,14 +194,6 @@ public class Product  implements java.io.Serializable {
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "double"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("products");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/ShopServerLibrary", "Products"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/ShopServerLibrary", "Product"));
-        elemField.setMinOccurs(0);
-        elemField.setNillable(true);
-        elemField.setItemQName(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/ShopServerLibrary", "Product"));
         typeDesc.addFieldDesc(elemField);
     }
 

@@ -50,7 +50,7 @@ public class IShopServiceProxy implements org.tempuri.IShopService {
     return iShopService.getAllProducts();
   }
   
-  public java.lang.String buyProduct(org.datacontract.schemas._2004._07.ShopServerLibrary.User u, org.datacontract.schemas._2004._07.ShopServerLibrary.Product p, java.lang.Integer amount) throws java.rmi.RemoteException{
+  public java.lang.String buyProduct(java.lang.Integer u, java.lang.Integer p, java.lang.Integer amount) throws java.rmi.RemoteException{
     if (iShopService == null)
       _initIShopServiceProxy();
     return iShopService.buyProduct(u, p, amount);
@@ -68,10 +68,16 @@ public class IShopServiceProxy implements org.tempuri.IShopService {
     return iShopService.register(username);
   }
   
-  public org.datacontract.schemas._2004._07.ShopServerLibrary.Product[] getBoughtProducts() throws java.rmi.RemoteException{
+  public org.datacontract.schemas._2004._07.ShopServerLibrary.Product[] getBoughtProducts(java.lang.Integer id) throws java.rmi.RemoteException{
     if (iShopService == null)
       _initIShopServiceProxy();
-    return iShopService.getBoughtProducts();
+    return iShopService.getBoughtProducts(id);
+  }
+  
+  public org.datacontract.schemas._2004._07.ShopServerLibrary.User findUser(java.lang.Integer id) throws java.rmi.RemoteException{
+    if (iShopService == null)
+      _initIShopServiceProxy();
+    return iShopService.findUser(id);
   }
   
   

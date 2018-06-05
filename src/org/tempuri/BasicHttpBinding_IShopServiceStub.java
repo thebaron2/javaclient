@@ -16,7 +16,7 @@ public class BasicHttpBinding_IShopServiceStub extends org.apache.axis.client.St
     static org.apache.axis.description.OperationDesc [] _operations;
 
     static {
-        _operations = new org.apache.axis.description.OperationDesc[5];
+        _operations = new org.apache.axis.description.OperationDesc[6];
         _initOperationDesc1();
     }
 
@@ -36,13 +36,11 @@ public class BasicHttpBinding_IShopServiceStub extends org.apache.axis.client.St
 
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("BuyProduct");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://tempuri.org/", "u"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/ShopServerLibrary", "User"), org.datacontract.schemas._2004._07.ShopServerLibrary.User.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://tempuri.org/", "u"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), java.lang.Integer.class, false, false);
         param.setOmittable(true);
-        param.setNillable(true);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://tempuri.org/", "p"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/ShopServerLibrary", "Product"), org.datacontract.schemas._2004._07.ShopServerLibrary.Product.class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://tempuri.org/", "p"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), java.lang.Integer.class, false, false);
         param.setOmittable(true);
-        param.setNillable(true);
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://tempuri.org/", "amount"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), java.lang.Integer.class, false, false);
         param.setOmittable(true);
@@ -86,6 +84,9 @@ public class BasicHttpBinding_IShopServiceStub extends org.apache.axis.client.St
 
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("GetBoughtProducts");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://tempuri.org/", "id"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), java.lang.Integer.class, false, false);
+        param.setOmittable(true);
+        oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/ShopServerLibrary", "ArrayOfProduct"));
         oper.setReturnClass(org.datacontract.schemas._2004._07.ShopServerLibrary.Product[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("http://tempuri.org/", "GetBoughtProductsResult"));
@@ -94,6 +95,18 @@ public class BasicHttpBinding_IShopServiceStub extends org.apache.axis.client.St
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
         _operations[4] = oper;
+
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("FindUser");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://tempuri.org/", "id"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), java.lang.Integer.class, false, false);
+        param.setOmittable(true);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://schemas.datacontract.org/2004/07/ShopServerLibrary", "User"));
+        oper.setReturnClass(org.datacontract.schemas._2004._07.ShopServerLibrary.User.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://tempuri.org/", "FindUserResult"));
+        oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[5] = oper;
 
     }
 
@@ -249,7 +262,7 @@ public class BasicHttpBinding_IShopServiceStub extends org.apache.axis.client.St
 }
     }
 
-    public java.lang.String buyProduct(org.datacontract.schemas._2004._07.ShopServerLibrary.User u, org.datacontract.schemas._2004._07.ShopServerLibrary.Product p, java.lang.Integer amount) throws java.rmi.RemoteException {
+    public java.lang.String buyProduct(java.lang.Integer u, java.lang.Integer p, java.lang.Integer amount) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -351,7 +364,7 @@ public class BasicHttpBinding_IShopServiceStub extends org.apache.axis.client.St
 }
     }
 
-    public org.datacontract.schemas._2004._07.ShopServerLibrary.Product[] getBoughtProducts() throws java.rmi.RemoteException {
+    public org.datacontract.schemas._2004._07.ShopServerLibrary.Product[] getBoughtProducts(java.lang.Integer id) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
@@ -367,7 +380,7 @@ public class BasicHttpBinding_IShopServiceStub extends org.apache.axis.client.St
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {});
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {id});
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
@@ -378,6 +391,40 @@ public class BasicHttpBinding_IShopServiceStub extends org.apache.axis.client.St
                 return (org.datacontract.schemas._2004._07.ShopServerLibrary.Product[]) _resp;
             } catch (java.lang.Exception _exception) {
                 return (org.datacontract.schemas._2004._07.ShopServerLibrary.Product[]) org.apache.axis.utils.JavaUtils.convert(_resp, org.datacontract.schemas._2004._07.ShopServerLibrary.Product[].class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+  throw axisFaultException;
+}
+    }
+
+    public org.datacontract.schemas._2004._07.ShopServerLibrary.User findUser(java.lang.Integer id) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[5]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("http://tempuri.org/IShopService/FindUser");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("http://tempuri.org/", "FindUser"));
+
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {id});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (org.datacontract.schemas._2004._07.ShopServerLibrary.User) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (org.datacontract.schemas._2004._07.ShopServerLibrary.User) org.apache.axis.utils.JavaUtils.convert(_resp, org.datacontract.schemas._2004._07.ShopServerLibrary.User.class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {
